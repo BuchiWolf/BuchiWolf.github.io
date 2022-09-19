@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第一章 计算机网络和因特网1.1 什么是因特网1.1.1 具体构成描述因特网是一个世界范围的计算机网络。连接到因特网的设备称为主机，或端系统（end system）。 端系统通过通信链路（communication link）和分组交换机（packet switch）连接到一起。 不同的链路能够以不同的传输速率传输数据。transmission rate: bandwidth (bps) 当一台端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://example.com/2022/09/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="AcBuchi个人博客">
+<meta property="og:description" content="第一章 计算机网络和因特网1.1 什么是因特网1.1.1 具体构成描述因特网是一个世界范围的计算机网络。连接到因特网的设备称为主机，或端系统（end system）。 端系统通过通信链路（communication link）和分组交换机（packet switch）连接到一起。 不同的链路能够以不同的传输速率传输数据。transmission rate: bandwidth (bps) 当一台端">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220916151600244.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220916152930718.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220916164903209.png">
+<meta property="article:published_time" content="2022-09-19T01:28:57.357Z">
+<meta property="article:modified_time" content="2022-09-17T09:15:28.129Z">
+<meta property="article:author" content="Buchi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220916151600244.png">
+
+<link rel="canonical" href="http://example.com/2022/09/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机网络 | AcBuchi个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AcBuchi个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Buchi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AcBuchi个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-19 09:28:57" itemprop="dateCreated datePublished" datetime="2022-09-19T09:28:57+08:00">2022-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-17 17:15:28" itemprop="dateModified" datetime="2022-09-17T17:15:28+08:00">2022-09-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="第一章-计算机网络和因特网"><a href="#第一章-计算机网络和因特网" class="headerlink" title="第一章 计算机网络和因特网"></a>第一章 计算机网络和因特网</h2><h3 id="1-1-什么是因特网"><a href="#1-1-什么是因特网" class="headerlink" title="1.1 什么是因特网"></a>1.1 什么是因特网</h3><h4 id="1-1-1-具体构成描述"><a href="#1-1-1-具体构成描述" class="headerlink" title="1.1.1 具体构成描述"></a>1.1.1 具体构成描述</h4><p>因特网是一个世界范围的计算机网络。连接到因特网的设备称为<strong>主机</strong>，或<strong>端系统</strong>（end system）。</p>
+<p>端系统通过<strong>通信链路</strong>（communication link）和<strong>分组交换机</strong>（packet switch）连接到一起。</p>
+<p>不同的链路能够以不同的传输速率传输数据。transmission rate: bandwidth (bps)</p>
+<p>当一台端系统要向另一台端系统发送数据时，发送端系统将数据分段，并为每段加上首部字节，由此形成的信息包用计算机网络的术语来说称为<strong>分组</strong> （packet） 这些分组通过网络发送到目的端系统，在那里被装配成初始数据。</p>
+<p>分组交换机从它的一条入通信链路接收到达的分组，并从它的一条出通信链路转发该分组。</p>
+<p>分组交换机：路由器（router）、链路层交换机（link-layer switch）</p>
+<p>链路层交换机通常用于接入网中，而路由器通常用于网络核心中。</p>
+<p>端系统通过<strong>因特网服务提供商</strong>（ISP）接入因特网</p>
+<p>通信规则：协议（protocol）：control sending</p>
+<p>protocals define format, order of msgs sent and received among network entites and actions taken an msg transmission, receipt</p>
+<p>因特网标准：RFC、IETF.etc</p>
+<h4 id="1-1-2-服务描述"><a href="#1-1-2-服务描述" class="headerlink" title="1.1.2 服务描述"></a>1.1.2 服务描述</h4><p>涉及多个相互交换数据的端系统的程序称为<strong>分布式应用程序</strong>。</p>
+<p>与因特网相连的端系统提供了一个<strong>套接字接口</strong>（socket interface），该接口规定了运行在一个端系统上的程序请求因特网基础设施向运行在另一个端系统上的特定目的地程序交付数据的方式。</p>
+<p><strong>协议</strong>定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和&#x2F;或接收一条报文或其他事件所采取的动作。</p>
+<h3 id="1-2-网络边缘"><a href="#1-2-网络边缘" class="headerlink" title="1.2 网络边缘"></a>1.2 网络边缘</h3><p>越来越多的设备作为端系统与因特网相连。</p>
+<p>主机&#x3D;端系统，但主机有时又被进一步分为两类，<strong>客户机</strong>（client）和<strong>服务器</strong>（server）</p>
+<h4 id="1-2-1-接入网"><a href="#1-2-1-接入网" class="headerlink" title="1.2.1 接入网"></a>1.2.1 接入网</h4><p>接入网：是指将端系统物理连接到其<strong>边缘路由器</strong>（eage router）的网络</p>
+<p>1.家庭接入：DSL、电缆、FTTH、拨号和卫星</p>
+<ul>
+<li>DSL 数字用户线，宽带住宅从本地电话公司获得DSL因特网接入</li>
+<li>电缆因特网接入，利用了有线电视公司现有的有线电视基础设施</li>
+<li>FTTH：光纤到户，每个家庭具有一个光纤网络端接器，有专门的光纤连接到邻近的分配器</li>
+<li>在无法提供上述服务（如乡村环境），能够使用卫星链路与因特网相连</li>
+</ul>
+<p>2.企业和家庭接入：以太网和WiFi</p>
+<ul>
+<li><p>以太网用户是由双绞铜线与一台以太网交换机相连</p>
+</li>
+<li><p>WLAN：无线局域网</p>
+<p>无限用户从一个接入点接受分组，该接入点与企业网相连，企业网再与有线因特网相连。</p>
+</li>
+</ul>
+<p>3.无线广域接入：3G和LTE</p>
+<p>​	使用蜂窝网提供商运营的基站来发送和接受分组，用户于万米范围内都可以使用。3G</p>
+<p>​	长期演进技术（LTE）来源于3G技术，能够取得超过10Mbps的速率。</p>
+<h4 id="1-2-2-物理媒介"><a href="#1-2-2-物理媒介" class="headerlink" title="1.2.2 物理媒介"></a>1.2.2 物理媒介</h4><p>​	导引型媒介：电波沿着固体媒介前行，如光缆、双绞铜线和同轴电缆</p>
+<p>​	非导引型媒介：电波在空气或外层空间中传播，如无线局域网或数字卫星频道</p>
+<h3 id="1-3-网络核心"><a href="#1-3-网络核心" class="headerlink" title="1.3 网络核心"></a>1.3 网络核心</h3><p>由互联因特网端系统的分组交换机和链路构成的网状结构。</p>
+<h4 id="1-3-1-分组交换"><a href="#1-3-1-分组交换" class="headerlink" title="1.3.1 分组交换"></a>1.3.1 分组交换</h4><p>在各种网络应用中，端系统彼此交换报文（message）。</p>
+<p>源将长报文划分为较小的数据块，称之为分组（packet）交换。</p>
+<p>在源和目的地之间，每个分组都通过通信链路和<strong>分组交换机</strong>（packet switch）传送。</p>
+<p>（交换机主要有两类：<strong>路由器</strong>（router）<strong>和链路层交换机</strong>（link-layer switch））</p>
+<p>分组以等于该链路最大传输速率的速度传输通过通信链路。因此，如果某源端系统或分组交换机经过一条链路发送 $L$ 比特的分组，链路的传输速率为 $R$ 比特&#x2F;秒，则传输该分组的时间 $t&#x3D;L&#x2F;R$</p>
+<p><strong>存储转发传输</strong>：多数分组交换机在链路的输入端使用的机制</p>
+<p>在交换机能够开始向输出链路传输该分组的第一个比特之前 ，必须接收到整个分组 </p>
+<p>也就是在路由器向目的端传输报文时，必须已经接收一个完整的报文（用时 $L&#x2F;R$）</p>
+<p>（此时我们忽略传播时延——指这些比特以接近光速的速度跨越线路所需要的时间）</p>
+<p><strong>排队时延和分组丢失</strong></p>
+<p><strong>排队时延</strong>：到达的分组需要传输到某条链路，但发现该链路正忙于传输其他分组，该到达分组必须在输出缓存中等待；</p>
+<p>对于每条相连的链路，该分组交换机具有一个<strong>输出缓存</strong>（output buffer，也叫**输出队列 **output queue），用于存储路由器准备发往那条链路的分组</p>
+<p><strong>分组丢失（丢包）</strong>（packet loss）如果某个缓存空间已满，到达该缓存的愤怒将会丢失。</p>
+<p><strong>转发表和路由选择协议</strong></p>
+<p>在因特网中，每个端系统都有一个IP地址。当源主机要向目的端系统发送一个分组时，源在该分组的首部包含了目的地的IP地址。当一个分组到达网络中的路由器时，路由器检查给分组的目的地址的一部分，并向一台相邻路由器转发该分组。更特别的是，每台路由器具有一个转发表，用于将目的地址（或其一部分）映射成为输出链路，并将分组导向该链路。</p>
+<p>因特网具有一些特殊的<strong>路由选择协议</strong>（routing protocol），用于自动地设置这些转发表</p>
+<h4 id="1-3-2-电路交换"><a href="#1-3-2-电路交换" class="headerlink" title="1.3.2 电路交换"></a>1.3.2 电路交换</h4><p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换</p>
+<h5 id="电路交换网络中的复用"><a href="#电路交换网络中的复用" class="headerlink" title="电路交换网络中的复用"></a>电路交换网络中的复用</h5><p>链路中的电路是通过频分复用（Frequency-Division Multiplexing, FDM）或时分复用（Time-Division Multiplexing, TDM）来实现的</p>
+<h5 id="分组交换与电路交换的对比"><a href="#分组交换与电路交换的对比" class="headerlink" title="分组交换与电路交换的对比"></a>分组交换与电路交换的对比</h5><p>分组交换：</p>
+<ul>
+<li>端到端时延是可变的且不可预测（因为排队时延的变动和不可预测）</li>
+<li>提供了比电路交换更好的宽带共享</li>
+<li>比电路交换更简单有效，实现成本更低</li>
+</ul>
+<p>分组交换适用于突发性的数据传输，不需要在数据传输之前建立预留的信道</p>
+<p>电路交换不考虑需求，而预先分配了传输链路的使用，这使得已分配而并不需要的链路时间未被利用。另一方面，分组交换按需分配链路使用。链路传输能力将在所有需要在链路上传输分组的用户之间逐分组地被共享。</p>
+<h4 id="1-3-3网络的网络"><a href="#1-3-3网络的网络" class="headerlink" title="1.3.3网络的网络"></a>1.3.3网络的网络</h4><p>端系统经过一个<strong>接入ISP</strong>（assess Internet Service Providers）与因特网相连。该接入ISP能够提供有线或无线连接接入技术。</p>
+<p>沿着这些相同的路线，第三方公司能够创建一个<strong>因特网交换点IXP</strong>（Internet Exchange Point），IXP是一个汇合点，多个ISP能够在这里一起<strong>对等</strong>（peer）。IXP通常位于一个有自己的交换机地独立建筑物中。</p>
+<p>对等的ISP不进行结算，较低层ISP是较高层ISP的客户。</p>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220916151600244.png" style="zoom:80%;" />
+
+<h3 id="1-4-分组交换网中的时延、丢包和吞吐量"><a href="#1-4-分组交换网中的时延、丢包和吞吐量" class="headerlink" title="1.4 分组交换网中的时延、丢包和吞吐量"></a>1.4 分组交换网中的时延、丢包和吞吐量</h3><p>计算机网络必定要限制在端系统之间的吞吐量，在端系统之间引入时延，而且实际上也会丢失分组。</p>
+<h4 id="1-4-1-分组交换网中的时延概述"><a href="#1-4-1-分组交换网中的时延概述" class="headerlink" title="1.4.1 分组交换网中的时延概述"></a>1.4.1 分组交换网中的时延概述</h4><p>分组从一台主机（源）出发，通过一系列路由器传输，在另一台主机（目的地）中结束它的历程。</p>
+<p>从节点到后继节点传输，该分组在沿途的每个节点都经受了几种不同类型的时延。</p>
+<ul>
+<li>节点处理时延（nodal processing delay）<ul>
+<li>检查分组首部和决定将该分组导向何处所需要的时间</li>
+<li>检查比特级别差错所需要的时间（微秒级甚至更低）</li>
+</ul>
+</li>
+<li>排队时延（queuing delay）<ul>
+<li>等待传输时间，取决于先期到达的正在排队等待向链路传输的分组数量。</li>
+<li>毫秒到微秒量级。</li>
+</ul>
+</li>
+<li>传输时延（transmission delay）<ul>
+<li>$L&#x2F;R$</li>
+</ul>
+</li>
+<li>传播时延（propagation delay）<ul>
+<li>该传播速率取决于物理媒介，等于或略小于光速</li>
+<li>$d&#x2F;s$，其中 $d$ 是两路由器的距离，$s$ 是该链路的传播速率</li>
+</ul>
+</li>
+<li>这些时延总体累加起来是节点总时延（total nodal dalay）<ul>
+<li><img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220916152930718.png" style="zoom:80%;" /></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-4-2-排队时延和丢包"><a href="#1-4-2-排队时延和丢包" class="headerlink" title="1.4.2 排队时延和丢包"></a>1.4.2 排队时延和丢包</h4><p>统计度量，令a表示分组到达队列的平均速率（单位</p>
+<p>令a表示分组到达队列的平均速率 (a 的单位是分组／秒，即 pkt&#x2F;s ) 前面讲过R是传输速率，即从队列中推出比特的速率（以 bps 即b&#x2F;s为单位）为了简单起见，也假定所有分组都是由L比特组成的 则比特到达队列的平均速率 La bps 最后，假定该队列非常大，因此它基本能容纳无限数量的比特 比率 La&#x2F;R 称为流量强度 (traffic intensity) ,</p>
+<p>随着流量强度接近1，平均排队长度变得越来越长，类似于对数函数</p>
+<p>丢包</p>
+<p>排队容量是有限的，随着流量强度接近1，排队时延并不真正趋向无穷大，而是会被舍弃</p>
+<p>一个节点的性能常常不仅根据时延来度量，而且根据丢包的概率来度量。</p>
+<h4 id="1-4-4-计算机网络中的吞吐量"><a href="#1-4-4-计算机网络中的吞吐量" class="headerlink" title="1.4.4 计算机网络中的吞吐量"></a>1.4.4 计算机网络中的吞吐量</h4><h3 id="1-5-协议层次及其服务模型"><a href="#1-5-协议层次及其服务模型" class="headerlink" title="1.5 协议层次及其服务模型"></a>1.5 协议层次及其服务模型</h3><h4 id="1-5-1-分层的体系结构"><a href="#1-5-1-分层的体系结构" class="headerlink" title="1.5.1 分层的体系结构"></a>1.5.1 分层的体系结构</h4><p>分层的体系结构可以讨论大而复杂的系统</p>
+<p><strong>协议分层</strong></p>
+<p>各层的所有协议被称为协议栈。因特网的协议栈有五个层次组成，物理层、链路层、网络层、运输层、应用层</p>
+<p>每层通过在该层中执行某些动作，或使用直接下层的服务来提供他的服务</p>
+<p>两种体系结构：</p>
+<ul>
+<li>ISO（国际标准化组织）OSI参考模型：七层，应用层下设置表示层和会话层<ul>
+<li>表示层的作用是使通信的应用程序能够解释交换数据的含义。</li>
+<li>会话层提供了数据交换的定界和同步功能，包括了建立检查点和恢复方案的方法。</li>
+</ul>
+</li>
+<li>TCP&#x2F;IP参考模型：五层</li>
+</ul>
+<p>物理层：bits on the wire</p>
+<p>链路层：相邻节点间的数据通信，传送的数据单元为frame（帧）</p>
+<p>网络层：主机到主机的数据通信，传送的数据单元为datagram（数据报）</p>
+<p>传输层：进程与进程的数据交换（应用程序断电之间传送报文段segment）TCP&#x2F;UDP</p>
+<p>应用层：网络应用程序及它们的应用层协议存留的地方。</p>
+<h4 id="1-5-2-封装"><a href="#1-5-2-封装" class="headerlink" title="1.5.2 封装"></a>1.5.2 封装</h4><p>封装(encapsulation)。在发送主机端，一个<strong>应用层报文</strong> <em>(application-layer message)<em>（下图中的M）被传送给运输层。在最简单的情况下，运输层收取到报文并附上附加信息（所谓运输层首部信息，下图中的H<del>1</del>),该首部将被接收端的运输层使用。应用层报文和运输层首部信息一道构成了**运输层报文段</em></em> *(transport-layer segment)*。运输层报文段因此封装了应用层报文。附加的信息也许包括了下列信息：允许接收端运输层向上向适当的应用程序交付报文的信息；差错检测位信息，该信息让接收方能够判断报文中的比特是否在途中已被改变。运输层则向网络层传递该报文段，网络层增加了如源和目的端系统地址等网络层首部信息（图1-24中的H),生成了网络层数据报(network-layer datagram)。该数据报接下来被传递给链路层，链路层（自然而然地）增加它自己的链路层首部信息并生成链路层帧(link-layer frame)。所以我们看到，在每一层，一个分组具有两种类型的字段：首部字段和有效载荷字段(payload6eld)。有效载荷通常是来自上一层的分组。</p>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220916164903209.png" alt="image-20220916164903209" style="zoom:80%;" />
+
+<h2 id="第二章-应用层"><a href="#第二章-应用层" class="headerlink" title="第二章 应用层"></a>第二章 应用层</h2><p>不想记笔记了</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/19/FPGA%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%92%8C%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机网络和因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-%E5%85%B7%E4%BD%93%E6%9E%84%E6%88%90%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 具体构成描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-%E6%9C%8D%E5%8A%A1%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 服务描述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%BD%91%E7%BB%9C%E8%BE%B9%E7%BC%98"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E6%8E%A5%E5%85%A5%E7%BD%91"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 接入网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E7%89%A9%E7%90%86%E5%AA%92%E4%BB%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 物理媒介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E7%BD%91%E7%BB%9C%E6%A0%B8%E5%BF%83"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 电路交换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A4%8D%E7%94%A8"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">电路交换网络中的复用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E4%B8%8E%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-3%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.3.3网络的网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BB%B6%E3%80%81%E4%B8%A2%E5%8C%85%E5%92%8C%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 分组交换网中的时延、丢包和吞吐量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BB%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 分组交换网中的时延概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-%E6%8E%92%E9%98%9F%E6%97%B6%E5%BB%B6%E5%92%8C%E4%B8%A2%E5%8C%85"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 排队时延和丢包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">1.4.4 计算机网络中的吞吐量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%8D%8F%E8%AE%AE%E5%B1%82%E6%AC%A1%E5%8F%8A%E5%85%B6%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 协议层次及其服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-%E5%88%86%E5%B1%82%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.5.1 分层的体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-%E5%B0%81%E8%A3%85"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.5.2 封装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">第二章 应用层</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Buchi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Buchi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

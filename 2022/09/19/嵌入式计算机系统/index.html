@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="嵌入式计算机系统IABC: IoT AI Big_data Cloud     嵌入式系统基本组成：  嵌入式系统硬件  由嵌入式处理器及各种外围设备电路构成 PC符合WINTEL结构，有标准、规范的硬件结构，Vs.嵌入式系统面向领域，其硬件结构、I&#x2F;O类型与数量等都各有不同 包括：嵌入式处理器（嵌入式微处理器微控制器、DSP、SoC、FPGA)、多样的存储介质、复位电路、时钟电路、总线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AcBuchi个人博客">
+<meta property="og:url" content="http://example.com/2022/09/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="AcBuchi个人博客">
+<meta property="og:description" content="嵌入式计算机系统IABC: IoT AI Big_data Cloud     嵌入式系统基本组成：  嵌入式系统硬件  由嵌入式处理器及各种外围设备电路构成 PC符合WINTEL结构，有标准、规范的硬件结构，Vs.嵌入式系统面向领域，其硬件结构、I&#x2F;O类型与数量等都各有不同 包括：嵌入式处理器（嵌入式微处理器微控制器、DSP、SoC、FPGA)、多样的存储介质、复位电路、时钟电路、总线">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220907101850946.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220907102407801.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220907103250954.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220914102153036.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220914103033823.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220914103641478.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220914112034680.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220914112636520.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220919082051958.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220919084150352.png">
+<meta property="og:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220919084120371.png">
+<meta property="article:published_time" content="2022-09-19T01:28:43.464Z">
+<meta property="article:modified_time" content="2022-09-19T01:28:29.198Z">
+<meta property="article:author" content="Buchi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/不啻/AppData/Roaming/Typora/typora-user-images/image-20220907101850946.png">
+
+<link rel="canonical" href="http://example.com/2022/09/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | AcBuchi个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AcBuchi个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Buchi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AcBuchi个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-19 09:28:43 / 修改时间：09:28:29" itemprop="dateCreated datePublished" datetime="2022-09-19T09:28:43+08:00">2022-09-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="嵌入式计算机系统"><a href="#嵌入式计算机系统" class="headerlink" title="嵌入式计算机系统"></a>嵌入式计算机系统</h1><p>IABC: IoT AI Big_data Cloud</p>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220907101850946.png" alt="image-20220907101850946" style="zoom:50%;" />
+
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220907102407801.png" alt="image-20220907102407801" style="zoom:50%;" />
+
+<p>嵌入式系统基本组成：</p>
+<ul>
+<li><p>嵌入式系统硬件</p>
+<ul>
+<li>由嵌入式处理器及各种外围设备电路构成</li>
+<li>PC符合WINTEL结构，有标准、规范的硬件结构，Vs.嵌入<br>式系统面向领域，其硬件结构、I&#x2F;O类型与数量等都各有不<br>同</li>
+<li>包括：嵌入式处理器（嵌入式微处理器微控制器、DSP、<br>SoC、FPGA)、多样的存储介质、复位电路、时钟电路、<br>总线控制、丰富I&#x2F;O接口等</li>
+</ul>
+</li>
+<li><p>嵌入式软件系统嵌入式应用软件：不同系统不同应用</p>
+<ul>
+<li>裸机软件、基于嵌入式操作系统的软件</li>
+</ul>
+</li>
+<li><p>嵌入式系统的开发工具</p>
+<ul>
+<li>硬件开发工具</li>
+<li>仿真器。。…</li>
+<li>其它（示波器等）</li>
+</ul>
+</li>
+<li><p>软件开发工具</p>
+<ul>
+<li>交叉编译、连接、定位、调试软件</li>
+<li>编程语言通常使用C语言、嵌入式JAVA.…</li>
+</ul>
+</li>
+</ul>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220907103250954.png" alt="image-20220907103250954" style="zoom: 50%;" />
+
+
+
+<h2 id="第二讲-硬件基础"><a href="#第二讲-硬件基础" class="headerlink" title="第二讲 硬件基础"></a>第二讲 硬件基础</h2><p><strong>封装：</strong></p>
+<ul>
+<li><p>双列直插式封装（DualIn-line package  DIP）</p>
+<p>中小规模集成电路均采用这种封装形式</p>
+<p>适合在PCB（印刷电路板）上穿孔焊接，操作方便</p>
+<p>芯片面积与封装面积之间比值较大，故体积也较大</p>
+<p>引脚数≤100</p>
+</li>
+<li><p>扁平式封装（PQFP&#x2F;PFP）</p>
+<p>大规模&#x2F;超大型集成电路采用这种封装形式</p>
+<p>采用SMT（表面安装设备技术）表贴到PCB</p>
+</li>
+<li><p>薄型小外形封装（Thin Small Outline Package  TSOP）</p>
+<p>常用于内存存储器</p>
+<p>在芯片的周围做出引脚，采用表面安装技术SMT直接附着在PCB表面</p>
+<p>寄生参数（电流大幅度变化时，引起输出电压扰动）减小，适合高频应用，操作方便</p>
+</li>
+<li><p>塑料引脚芯片载体封装（PLCC）</p>
+<p>匹配专门的安装卡座，可机械插拔</p>
+<p>主板（如Intel系列）的BIOS，或BIOS固件封装的常用形式</p>
+<p>外形尺寸比DIP小</p>
+</li>
+<li><p>插针网格阵列封装（Pin Grid Array Package  PGA）</p>
+<p>PGA插座，专门用来满足封装安装要求</p>
+</li>
+<li><p>球栅阵列封装（Ball Grid Array Package   BGA）</p>
+<p>多用于CPU，主板上南北桥芯片等高密度高性能多引脚封装</p>
+<p>信号传输延迟小，适应频率高</p>
+</li>
+</ul>
+<p>数据表 印制电路板（PCB）</p>
+<p>电源地与信号地</p>
+<blockquote>
+<p>电源地主要是针对电源回路电流所走的路径而言的，一般来说电源地流过的电流较大，而信号地主要是针对两块芯片或者模块之间的通信信号的回流所流过的路径，一般来说信号地流过的电流很小。</p>
+</blockquote>
+<p>其实两者都是GND，之所以分开来说，是想让大家明白在布PCB板时要清楚地了解电源及信号回流各自所流过的路径，然后在布板时考虑如何<strong>避免电源及信号共用回流路径</strong>，如果共用的话，有可能会导致电源地上大的电流会在信号地上产生一个电压差（可以解释为：导线是有阻抗的，只是很小的阻值，但如果所流过的电流较大时，也会在此导线上产生电位差，这也叫共阻抗干扰），使信号地的真实电位高于0V，如果信号地的电位较大时，有可能会使信号本来是高电平的，但却误判为低电平。</p>
+<p>当然电源地本来就很不干净，这样做也避免由于干扰使信号误判。所以将两者地在布线时稍微注意一下，就可以。一般来说即使在一起也不会产生大的问题，因为数字电路的门限较高。除了正确进行接地设计、安装,还要正确进行各种不同信号的接地处理。</p>
+<p>电路供电电压Vcc &gt; 芯片工作电压Vdd，发射级电源电压Vee，编程电压Vpp</p>
+<p><img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220914102153036.png" alt="image-20220914102153036"></p>
+<p>信号：信息的物理表示</p>
+<p>信号浮动（多驱动信号）：安装辅助元件来辅助其高低：上拉电阻、下拉电阻</p>
+<p>三态门：可以将信号驱动为高电压、低电压、浮动状态（高阻抗态）</p>
+<p><img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220914103033823.png" alt="image-20220914103033823"></p>
+<p>连接在元器件信号引脚和高电压之间的电阻，用于将引脚信号钳位在高电平，或在驱动能力不足时提供电流。</p>
+<p>通常其值可在1KΩ～100KΩ之间，值越大输出电平的延迟越大；值越小，电流越大，上拉能力越强，但损耗越大</p>
+<p>下拉电阻连接在元器件信号引脚和GND之间的电阻，用于将信号钳位在低电平，或者用于吸收电流。</p>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220914103641478.png" alt="image-20220914103641478" style="zoom:67%;" />
+
+<blockquote>
+<p>上拉就是将不确定的信号通过一个电阻钳位在高电平，电阻同时起限流作用。下拉同理，也是将不确定的信号通过一个电阻钳位在低电平。</p>
+<p>上拉是对器件输入电流，下拉是输出电流；强弱只是上拉电阻的阻值不同，没有什么严格区分；对于非集电极（或漏极）开路输出型电路（如普通门电路）提供电流和电压的能力是有限的，上拉电阻的功能主要是为集电极开路输出型电路输出电流通道。</p>
+</blockquote>
+<p><strong>负载问题</strong></p>
+<ul>
+<li>一个元件的输出驱动能力是有限的，当一个输出对应过多元件的输入，可能导致驱动过载</li>
+<li>制造商已标明元件输出信号上的驱动电流及所需的输入电流</li>
+<li>当出现驱动过载现象时需要增加驱动器电路</li>
+</ul>
+<p><strong>解决方法</strong></p>
+<ul>
+<li>增加驱动器：但是会引入延时</li>
+<li>分到不同的线路上：增加器件也会引入延时</li>
+</ul>
+<p><strong>基本元件与逻辑</strong></p>
+<ul>
+<li>晶体管：Transistor，固体半导体制成的器件<ul>
+<li>具有检波、整流、放大、开关、稳压、信号调制等多种功能；二极管（Diode）晶体管有两个极，一个PN结，单向导电特性</li>
+</ul>
+</li>
+<li><h2 id="三极管：双极性结型二极管"><a href="#三极管：双极性结型二极管" class="headerlink" title="三极管：双极性结型二极管"></a>三极管：双极性结型二极管</h2></li>
+</ul>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220914112034680.png" alt="image-20220914112034680" style="zoom: 50%;" />
+
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220914112636520.png" alt="image-20220914112636520" style="zoom:50%;" />
+
+<ol start="8">
+<li>退耦电容</li>
+</ol>
+<ul>
+<li><p>电路中的耦合是指电路网络中电流大小发生变化时，在其他电路网络中感应产生的寄生电流或供电电路中形成的反冲电流。</p>
+</li>
+<li><p>当芯片改变输出端电压时，需要大量的电量改变输出信号，此时芯片供电电路电压会急剧下降，可能导致芯片停止工作。		</p>
+</li>
+<li><p>退耦（也成为去耦）的目的就是消除电路之间的寄生耦合（退噪声，储能）。</p>
+<ul>
+<li>阻断不期望的信号</li>
+<li>基于储能快速提供能量补充</li>
+</ul>
+</li>
+<li><p>在电路特定位置接入电容可达到电路退耦的效果，该类电容就被称为退耦电容</p>
+</li>
+<li><p>布放在信号输出引脚，将输出信号的干扰作为滤除对象</p>
+</li>
+<li><p>一般分布在电路板上离可能需要大量点亮的电路部分很近的地方</p>
+<ul>
+<li>最好不采用电解电容，这种结构在高频时表现为电感</li>
+</ul>
+</li>
+<li><p>布放规则：靠近相应引脚（电源或信号），电容的电源或信号走线与地线所包围的面积最小</p>
+</li>
+</ul>
+<ol start="9">
+<li>旁路电容</li>
+</ol>
+<ul>
+<li>在电路中也是用于滤波，抗干扰的作用</li>
+<li>工作原理是将输入信号中的高频噪声作为滤除对象，利用电容的频率阻抗特性，将前级携带的高频杂波滤除</li>
+<li><img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220919082051958.png" alt="image-20220919082051958" style="zoom:80%;" /></li>
+</ul>
+<ol start="10">
+<li>寄存器</li>
+</ol>
+<ul>
+<li>寄存器是一种基于触发器逻辑构造的高速存储单元</li>
+<li>用于暂存计算过程中的指令、数据和地址</li>
+</ul>
+<ol start="11">
+<li>计数器</li>
+</ol>
+<ul>
+<li>集成电路中完成计数功能的逻辑部件</li>
+<li>由一组具有存储信息功能的触发器构成</li>
+<li>J-K触发器 R-S触发器 T触发器 D触发器</li>
+<li>当输入为系统时钟时，则成为定时器</li>
+</ul>
+<ol start="12">
+<li>总线</li>
+</ol>
+<ul>
+<li>连接各种功能部件并传输信息的一组通信线路</li>
+<li>根据传递的信息，可将其分为数据总线，地址总线和控制总线</li>
+</ul>
+<p>2.2 嵌入式系统硬件组成</p>
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220919084150352.png" alt="image-20220919084150352" style="zoom: 50%;" />
+
+<img src="C:\Users\不啻\AppData\Roaming\Typora\typora-user-images\image-20220919084120371.png" alt="image-20220919084120371" style="zoom:50%;" />
+
+<ul>
+<li><p>处理器子系统</p>
+<p>处理器子系统是嵌入式计算装置的核心，其处理能力，可靠性等是制约系统性能的瓶颈</p>
+</li>
+<li><p>存储子系统</p>
+</li>
+<li><p>时钟子系统</p>
+<p>为计算系统的工作提供时钟控制脉冲信号</p>
+</li>
+<li><p>I&#x2F;O子系统</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/03/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="next" title="计算机网络">
+      计算机网络 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">嵌入式计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">第二讲 硬件基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%EF%BC%9A%E5%8F%8C%E6%9E%81%E6%80%A7%E7%BB%93%E5%9E%8B%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">三极管：双极性结型二极管</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Buchi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Buchi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
