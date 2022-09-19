@@ -168,16 +168,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-09-19 09:29:10" itemprop="dateCreated datePublished" datetime="2022-09-19T09:29:10+08:00">2022-09-19</time>
+              <time title="创建时间：2022-09-19 21:04:52 / 修改时间：21:04:26" itemprop="dateCreated datePublished" datetime="2022-09-19T21:04:52+08:00">2022-09-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-15 17:18:04" itemprop="dateModified" datetime="2022-09-15T17:18:04+08:00">2022-09-15</time>
-              </span>
 
           
 
@@ -429,7 +423,7 @@
 <td>最低</td>
 </tr>
 </tbody></table>
-<h1 id="第四章-流程控制语句"><a href="#第四章-流程控制语句" class="headerlink" title="第四章 流程控制语句"></a>第四章 流程控制语句</h1><p>4.1 顺序结构	略</p>
+<h1 id="第四章-流程控制语句"><a href="#第四章-流程控制语句" class="headerlink" title="第四章 流程控制语句"></a>第四章 流程控制语句</h1><h3 id="为了让第四章有缩进我放一个三级标题在这"><a href="#为了让第四章有缩进我放一个三级标题在这" class="headerlink" title="为了让第四章有缩进我放一个三级标题在这"></a>为了让第四章有缩进我放一个三级标题在这</h3><p>4.1 顺序结构	略</p>
 <p>4.2 条件分支	略</p>
 <p>4.3 循环语句	</p>
 <ul>
@@ -639,6 +633,129 @@
 <h3 id="8-1-5-分组"><a href="#8-1-5-分组" class="headerlink" title="8.1.5 分组"></a>8.1.5 分组</h3><p>小括号可以界定优先次序，由此确定分组</p>
 <p>在Python中使用正则表达式时，时将其作为模式字符串使用的</p>
 <h2 id="8-2-使用re模块实现正则表达式操作"><a href="#8-2-使用re模块实现正则表达式操作" class="headerlink" title="8.2 使用re模块实现正则表达式操作"></a>8.2 使用re模块实现正则表达式操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re	<span class="comment">#引入模块</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#match()方法用于从字符串的开始处进行匹配，如果在起始位置匹配成功，则返回match对象，否则返回None</span></span><br><span class="line">re.<span class="keyword">match</span>(pattern,string,[flags])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="第九章-函数"><a href="#第九章-函数" class="headerlink" title="第九章 函数"></a>第九章 函数</h1><h2 id="9-1-函数的创建和调用"><a href="#9-1-函数的创建和调用" class="headerlink" title="9.1 函数的创建和调用"></a>9.1 函数的创建和调用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义的comments会在调用该函数时显示注释</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">functionname</span>(<span class="params">[parameterlist]</span>):</span><br><span class="line">    [<span class="string">&#x27;&#x27;&#x27;comments&#x27;&#x27;&#x27;</span>]</span><br><span class="line">    [functionbody]</span><br><span class="line"></span><br><span class="line"><span class="comment">#函数调用直接当作基本工具即可</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-函数参数"><a href="#9-2-函数参数" class="headerlink" title="9.2 函数参数"></a>9.2 函数参数</h2><p>形参和实参	略</p>
+<p>位置参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fun_bmi</span>(<span class="params">height,weight,person</span>):</span><br><span class="line">    [functionbody]</span><br><span class="line">    </span><br><span class="line"><span class="comment">#该函数中定义了三个参数，该形式下必须按指定数量指定顺序的参数形式进行传参</span></span><br><span class="line"><span class="comment">#关键字参数指定形式参数的名字，此时不需要顺序一致</span></span><br><span class="line">fun_bmi(height=<span class="number">1.74</span>,weight=<span class="number">60</span>,person=<span class="string">&quot;Leo&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#默认值设定，当缺少设定默认值的参数时不再抛出异常</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun_bmi</span>(<span class="params">height,weight,person=<span class="string">&quot;路人&quot;</span></span>):</span><br><span class="line"><span class="comment">#如果不清楚具体值，可以将None设置为默认参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#使用functionname.__defaults__可以查看当前函数的默认值参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#可变参数，也称为不定长参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1. *parameter:表示接收任意多个实际参数并将其放到一个元组中</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printcoffee</span>(<span class="params">*coffeename</span>):</span><br><span class="line">    <span class="comment">#此时输入任意个参数均能得到显示</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#1.5 如果想要使用一个已经存在的列表作为函数的可变参数</span></span><br><span class="line">printcoffee(*listname)</span><br><span class="line">	<span class="comment">#此时传入的参数为列表的所有元素</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#2. **parameter表示接受任意多个类似关键字参数一样显式赋值的实际参数，并将其放到一个字典中</span></span><br><span class="line"><span class="comment">#同理想要传入一个字典也可以使用该方法</span></span><br><span class="line">printsign(<span class="string">&#x27;数学&#x27;</span>=<span class="number">89</span>,<span class="string">&#x27;语文&#x27;</span>=<span class="number">87</span>)</span><br><span class="line">printsign(**dictname)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-3-返回值"><a href="#9-3-返回值" class="headerlink" title="9.3 返回值"></a>9.3 返回值</h2><p>当函数中不存在return关键字时默认返回None</p>
+<p>如果返回多个值，则返回的结果以元组形式返回，此时需要其他变量储存该元组</p>
+<h2 id="9-4-变量的作用域"><a href="#9-4-变量的作用域" class="headerlink" title="9.4 变量的作用域"></a>9.4 变量的作用域</h2><p>全局变量</p>
+<p>局部变量</p>
+<p>局部变量可以与全局变量重名，但在函数内调用时默认为使用局部变量，不影响全局变量</p>
+<p>在局部变量中调用global关键字，可以认为修改全局变量</p>
+<h2 id="9-5-匿名函数lambda"><a href="#9-5-匿名函数lambda" class="headerlink" title="9.5 匿名函数lambda"></a>9.5 匿名函数lambda</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result=<span class="keyword">lambda</span> [arg1[,arg2,...,argn]]:expression</span><br></pre></td></tr></table></figure>
+
+<p>在 lambda 表达式中，参数可以有多个，使用逗号分隔。</p>
+<p>但是表达式只有一个，即只能返回一个值。</p>
+<p>而且也不能出现其他非表达式语句，如 for 和 while</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">r=<span class="number">10</span></span><br><span class="line">result=<span class="keyword">lambda</span>.r:math.pi*r*r</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;圆的面积为:&quot;</span>,result)</span><br></pre></td></tr></table></figure>
+
+<h1 id="第十九章-网络编程"><a href="#第十九章-网络编程" class="headerlink" title="第十九章 网络编程"></a>第十九章 网络编程</h1><h2 id="19-1-网络基础"><a href="#19-1-网络基础" class="headerlink" title="19.1 网络基础"></a>19.1 网络基础</h2><p><strong>IP协议</strong></p>
+<ul>
+<li>IP地址是一个32位整数（称为IPv4），用  .  隔开</li>
+</ul>
+<p><strong>TCP协议</strong></p>
+<ul>
+<li>TCP协议负责在两台计算机之间建立可靠连接，保证数据包按顺序到达</li>
+<li>TCP协议会通过3次握手建立可靠连接</li>
+<li>对于每一个IP包编号，如果丢失会自动重发</li>
+<li>许多更高级的协议，如HTTP协议和SMTP协议，是建立在TCP协议之上的。一个TCP报文除了包含要传输的数据外，还包含源IP地址和目标IP地址，源端口和目的端口。</li>
+</ul>
+<p><strong>UDP协议</strong></p>
+<ul>
+<li>不需要建立连接，只需要目的端口号和IP地址就能进行通信</li>
+<li>不可靠，但比TCP要快</li>
+</ul>
+<p><strong>Socket简介</strong></p>
+<ul>
+<li>用于描述IP地址和端口，是一个通信链的句柄，可以实现不同虚拟机或不同计算机之间的通信</li>
+<li>Socket正如其英文原意那样，像一个多孔插座。每个插座有不同的编号，提供不同的服务。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.socket.socket(AddressFamily,<span class="type">Type</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数 socket.socket() 可以创建一个socket，并返回其描述符，该函数有两个参数：</p>
+<ul>
+<li><p>AddressFamily: 可以选择 <strong>AF_INET</strong>（用于 Internet 进程间通信），</p>
+<p>​									或者<strong>AF_UNIX</strong>（用于同一台机器进程间通信），常用前者</p>
+</li>
+<li><p>Type：套接字类型，可以是<strong>SOCK_STREAM</strong>（流式套接字，主要用于 TCP 协议）</p>
+<p>​									或者<strong>SOCK_DGRAM</strong>（数据报套接字，主要用于 UDP 协议）</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#为了创建TCP/IP套接字，可以使用下面的方式</span></span><br><span class="line">tcpSock=socket.socket(socket.AF_INET,SOCK_STREAM)</span><br><span class="line"><span class="comment">#为了创建UDP/IP套接字，可以使用下面的方式</span></span><br><span class="line">tcpSock=socket.socket(socket.AF_INET,SOCK_DGRAM)</span><br></pre></td></tr></table></figure>
+
+<p>Socket对象的内置方法：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s.bind()</td>
+<td>绑定地址（host,port）到套接字，在AF_INET下以元组 (host,port) 的形式表示地址</td>
+</tr>
+<tr>
+<td>s.listen()</td>
+<td>开始 TCP 监听。backlog 指定在拒绝连接之前，操作系统可以挂起的最大连接数量。该值至少为 1，大部分应用程序设为 5 就可以了。</td>
+</tr>
+<tr>
+<td>s.accept()</td>
+<td>被动接受TCP客户端连接,(阻塞式)等待连接的到来</td>
+</tr>
+<tr>
+<td>s.connect()</td>
+<td>主动初始化TCP服务器连接，。一般address的格式为元组（hostname,port），如果连接出错，返回socket.error错误。</td>
+</tr>
+<tr>
+<td>s.recv()</td>
+<td>接收 TCP 数据，数据以字符串形式返回，bufsize 指定要接收的最大数据量。flag 提供有关消息的其他信息，通常可以忽略。</td>
+</tr>
+<tr>
+<td>s.send()</td>
+<td>发送 TCP 数据，将 string 中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于 string 的字节大小。</td>
+</tr>
+<tr>
+<td>s.sendall()</td>
+<td>完整发送 TCP 数据。将 string 中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回 None，失败则抛出异常。</td>
+</tr>
+<tr>
+<td>s.recvfrom()</td>
+<td>接收 UDP 数据，与 recv() 类似，但返回值是（data,address）。其中 data 是包含接收数据的字符串，address 是发送数据的套接字地址。</td>
+</tr>
+<tr>
+<td>s.sendto()</td>
+<td>发送 UDP 数据，将数据发送到套接字，address 是形式为（ipaddr，port）的元组，指定远程地址。返回值是发送的字节数。</td>
+</tr>
+<tr>
+<td>s.close</td>
+<td>关闭套接字</td>
+</tr>
+</tbody></table>
+<h2 id="19-2-TCP编程"><a href="#19-2-TCP编程" class="headerlink" title="19.2 TCP编程"></a>19.2 TCP编程</h2><h3 id="19-2-1-创建TCP服务器"><a href="#19-2-1-创建TCP服务器" class="headerlink" title="19.2.1 创建TCP服务器"></a>19.2.1 创建TCP服务器</h3><ul>
+<li>使用socket创建一个套接字。</li>
+<li>使用bind绑定ip和port。</li>
+<li>使用listen使套接字变为可以被动链接。</li>
+<li>使用accept等待客户端的连接。</li>
+<li>使用recv&#x2F;send接收发送数据。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">host=<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">port=<span class="number">8080</span></span><br><span class="line">web=socket.socket()</span><br><span class="line">web.bind((host,port))</span><br><span class="line">web.listen(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;服务器等待客户端连接...&quot;</span>)</span><br><span class="line"><span class="comment">#开启死循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn,addr=web.accept()</span><br><span class="line">    data=conn.recv(<span class="number">1024</span>)</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    conn.sendall(<span class="string">b&#x27;HTTP/1.1 200 OK\r\n\r\nHello World&#x27;</span>)</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="19-2-2-创建TCP客户端"><a href="#19-2-2-创建TCP客户端" class="headerlink" title="19.2.2 创建TCP客户端"></a>19.2.2 创建TCP客户端</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">s=socket.socket()</span><br><span class="line">host=<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">port=<span class="number">8080</span></span><br><span class="line">s.connect((host,port))</span><br><span class="line">send_data=<span class="built_in">input</span>(<span class="string">&quot;请输入要发送的数据&quot;</span>)</span><br><span class="line">s.send(send_data.encode())</span><br><span class="line"><span class="comment">#接受对方发送过来的数据，最大接受1024个字节</span></span><br><span class="line">recvData=s.recv(<span class="number">1024</span>).decode()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;接收到的数据为:&quot;</span>,recvData)</span><br><span class="line"><span class="comment">#关闭套接字</span></span><br><span class="line">s.close</span><br></pre></td></tr></table></figure>
+
+<h2 id="19-3-UDP编程"><a href="#19-3-UDP编程" class="headerlink" title="19.3 UDP编程"></a>19.3 UDP编程</h2><h3 id="19-3-1-创建UDP服务器"><a href="#19-3-1-创建UDP服务器" class="headerlink" title="19.3.1 创建UDP服务器"></a>19.3.1 创建UDP服务器</h3><p>UDP服务器不需要TCP服务器那么多的设置，因为它们不是面向连接的。除了等待传入的链接之外，几乎不需要做其他工作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">s.bind((<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="number">8088</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;绑定UDP到8088端口&quot;</span>)</span><br><span class="line">data.addr=s.recvfrom(<span class="number">1024</span>)</span><br><span class="line">data=<span class="built_in">float</span>(data)*<span class="number">1.8</span>+<span class="number">32</span></span><br><span class="line">send_data=<span class="string">&quot;转换后的温度（单位：华氏温度）&quot;</span>+<span class="built_in">str</span>(data)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Received from %s:%s&quot;</span>% addr)</span><br><span class="line">s.sendto(send_data.encode(),addr)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="19-3-2-创建UDP客户端"><a href="#19-3-2-创建UDP客户端" class="headerlink" title="19.3.2 创建UDP客户端"></a>19.3.2 创建UDP客户端</h3><ul>
+<li>创建客户端套接字</li>
+<li>发送&#x2F;接收数据</li>
+<li>关闭套接字</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">data=<span class="built_in">input</span>(<span class="string">&quot;请输入要转换的温度：&quot;</span>)</span><br><span class="line">s.sendto(data.encode,(<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="number">8088</span>))</span><br><span class="line"><span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode())</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
 
 
       
